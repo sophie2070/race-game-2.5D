@@ -10,12 +10,6 @@ public class Controller : MonoBehaviour
     public float speed = 0;
     public float Break = 50;
 
-    private void Update()
-    {
-        Vector2 velocity = Vector2.up * speed;
-        transform.Translate(velocity * Time.deltaTime, Space.Self);
-    }
-
     public void ChangeSpeed(float throttle)
     {
         if (throttle != 0)
@@ -24,7 +18,6 @@ public class Controller : MonoBehaviour
             speed = Mathf.Clamp(speed, -maxSpeed, maxSpeed);
         }
     }
-
     public void Brakeing(float breakingPower)
     {
         if (breakingPower != 0)
@@ -33,21 +26,19 @@ public class Controller : MonoBehaviour
             speed = Mathf.Clamp(speed, 0, maxSpeed);
         }
     }
-
-    public void Brakeing(int breakingPower)
-    {
-        speed -= Time.deltaTime * breakingPower;
-    }
-
     public void turn(float direction)
     {
-        transform.Rotate(0, 0, direction * -turnSpeed * Time.deltaTime);
+        transform.Rotate(0, direction * -turnSpeed * Time.deltaTime,0);
     }
-
     public void Idle()
     {
         if (!Mathf.Approximately(speed, 0))
         {
+            if (speed < 0.01f)
+            {
+                speed = 0;
+            }
+
             if (speed > 0)
             {
                 speed -= Time.deltaTime;
@@ -60,9 +51,10 @@ public class Controller : MonoBehaviour
 
             speed = Mathf.Clamp(speed, -maxSpeed, maxSpeed);
         }
-       /*if (Mathf.Approximately(speed, 0))
-        {
-            speed = 0;
-        }*/
+    }
+    private void Update()
+    {
+        Vector3 velocity = Vector3.forward * speed;
+        transform.Translate(velocity * Time.deltaTime, Space.Self);
     }
 }
