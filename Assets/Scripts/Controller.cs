@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    public float maxSpeed = 200;
-    public float turnSpeed = 500;
-    public float Accel = 30;
+    public float maxSpeed = 25;
+    public float turnSpeed = 50;
+    public float Accel = 6;
     public float speed = 0;
-    public float Break = 50;
+    public float Break = 10;
 
     public void ChangeSpeed(float throttle)
     {
@@ -26,9 +26,9 @@ public class Controller : MonoBehaviour
             speed = Mathf.Clamp(speed, 0, maxSpeed);
         }
     }
-    public void turn(float direction)
+    public void Turn(float direction)
     {
-        transform.Rotate(0, direction * -turnSpeed * Time.deltaTime,0);
+        transform.Rotate(0, direction * turnSpeed * Time.deltaTime,0);
     }
     public void Idle()
     {

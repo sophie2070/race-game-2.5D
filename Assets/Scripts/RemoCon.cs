@@ -29,7 +29,7 @@ public class RemoCon : MonoBehaviour
 
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        controller.turn(horizontalInput * 2);
+        controller.Turn(horizontalInput * 2);
 
         if (horizontalInput == 0) controller.Idle();
 
@@ -37,10 +37,8 @@ public class RemoCon : MonoBehaviour
        
         controller.Brakeing(brake * 2);
 
-        //if (brake == 0) controller.Idle();
-
         controller.ChangeSpeed(forwards);
-        controller.turn(turn);
+        controller.Turn(turn);
         controller.Brakeing(breakingPower);
         
     }
