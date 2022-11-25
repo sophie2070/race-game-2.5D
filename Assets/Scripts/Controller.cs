@@ -10,6 +10,10 @@ public class Controller : MonoBehaviour
     public float speed = 0;
     public float Break = 10;
 
+    protected void LateUpdate()
+    {
+        transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y ,0);
+    }
     public void ChangeSpeed(float throttle)
     {
         if (throttle != 0)

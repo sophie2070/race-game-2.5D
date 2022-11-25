@@ -7,12 +7,13 @@ public class WaypointDetection : MonoBehaviour
 {
     int currentWaypoint = 0;
     int currentLap = 1;
-    
+    [SerializeField]
+    GameObject finish;
 
-    
-    private void OnTriggerEnter()
+
+    private void OnTriggerEnter(Collider waypointhit)
     {
-        if (gameObject.CompareTag("Waypoint"))
+        if (waypointhit.gameObject.CompareTag("Waypoint"))
         {
             currentWaypoint++;
             Debug.Log("waypointhit");
@@ -26,9 +27,9 @@ public class WaypointDetection : MonoBehaviour
             currentWaypoint = 0;
             currentLap++;
         }
-        if (currentLap >= 3)
+        if (currentWaypoint >= 35)
         {
-
+            finish.SetActive(enabled);
         }
     }
 }
