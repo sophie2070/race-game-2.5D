@@ -1,15 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class MenuTiles : MonoBehaviour
 {
-    Rigidbody Rigidbody;
-    public void TileMove()
+    [SerializeField]
+    GameObject moveto;
+    [SerializeField]
+    GameObject bar;
+
+    Vector2 movetoposition;
+
+    private void Awake()
     {
-        Vector2 move = new Vector2(1 * Time.deltaTime,0);
-        Debug.Log("move");
-        Rigidbody = GetComponent<Rigidbody>();
-        transform.position = move;
+        movetoposition =moveto.transform.position;
+    }
+    public void MoveTo()
+    {
+        bar.transform.position = movetoposition;
+
     }
 }

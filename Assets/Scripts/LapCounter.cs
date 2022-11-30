@@ -11,7 +11,9 @@ public class LapCounter : MonoBehaviour
     [SerializeField]
     GameObject lap3;
 
+    [SerializeField]
     WaypointDetection WaypointDetection;
+
     private void Update()
     {
         if (WaypointDetection.currentLap == 1)
