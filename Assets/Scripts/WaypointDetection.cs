@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class WaypointDetection : MonoBehaviour
 {
-    int currentWaypoint = 0;
-    int currentLap = 1;
+    public int currentWaypoint = 0;
+    public int currentLap = 1;
     [SerializeField]
     GameObject finish;
+
+    
 
 
     private void OnTriggerEnter(Collider waypointhit)
@@ -17,6 +19,12 @@ public class WaypointDetection : MonoBehaviour
         {
             currentWaypoint++;
             Debug.Log("waypointhit");
+            FindObjectOfType<AudioManager>().Play("NewLap");
+        }
+        if (waypointhit.gameObject.CompareTag("Finish"))
+        {
+            Debug.Log("Finished");
+            FindObjectOfType<AudioManager>().Play("Finished");
         }
     }
 
@@ -24,12 +32,16 @@ public class WaypointDetection : MonoBehaviour
     {
         if (currentWaypoint >= 12)
         {
-            currentWaypoint = 0;
-            currentLap++;
+            currentLap = 2;
         }
-        if (currentWaypoint >= 35)
+        if (currentWaypoint >= 24)
+        {
+            currentLap = 3;
+        }
+        if (currentWaypoint >= 35 && currentLap >= 3)
         {
             finish.SetActive(enabled);
+            
         }
     }
 }
