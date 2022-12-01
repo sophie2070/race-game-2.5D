@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    public float maxSpeed = 25;
-    public float turnSpeed = 50;
-    public float Accel = 6;
+    public float maxSpeed = 35;
+    public float turnSpeed = 40;
+    public float Accel = 12;
     public float speed = 0;
-    public float Break = 10;
+    public float Break = 12;
 
     protected void LateUpdate()
     {
@@ -55,6 +55,18 @@ public class Controller : MonoBehaviour
 
             speed = Mathf.Clamp(speed, -maxSpeed, maxSpeed);
         }
+    }
+
+    public void PowerSlideActive()
+    {
+        turnSpeed = 60;
+    }
+
+    public void PowerSlideOff()
+    {
+        turnSpeed = 40;
+        speed = speed * 1.5f * Time.deltaTime;
+        speed = Mathf.Clamp(speed, 35, 50);
     }
     private void Update()
     {

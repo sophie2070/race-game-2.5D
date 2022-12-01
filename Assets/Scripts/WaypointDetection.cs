@@ -30,15 +30,15 @@ public class WaypointDetection : MonoBehaviour
 
     private void Update()
     {
-        if (currentWaypoint >= 12)
+        if (currentWaypoint >= 17)
         {
             currentLap = 2;
         }
-        if (currentWaypoint >= 24)
+        if (currentWaypoint >= 34)
         {
             currentLap = 3;
         }
-        if (currentWaypoint >= 35 && currentLap >= 3)
+        if (currentWaypoint >= 50 && currentLap >= 3)
         {
             finish.SetActive(enabled);
             
