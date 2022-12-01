@@ -7,19 +7,13 @@ using UnityEngine;
 public class MenuTiles : MonoBehaviour
 {
     [SerializeField]
-    GameObject moveto;
+    GameObject curPos;
     [SerializeField]
-    GameObject bar;
+    GameObject movetoPos;
 
-    Vector2 movetoposition;
-
-    private void Awake()
+    //curPos.transform.translate = new Vector3
+    public void Tilemove()
     {
-        movetoposition =moveto.transform.position;
-    }
-    public void MoveTo()
-    {
-        bar.transform.position = movetoposition;
-
+       
     }
 }
