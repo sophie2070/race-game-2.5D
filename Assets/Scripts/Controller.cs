@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
@@ -10,9 +11,13 @@ public class Controller : MonoBehaviour
     public float speed = 0;
     public float Break = 12;
 
+    [SerializeField]
+    float turnTimer;
+
+
     protected void LateUpdate()
     {
-        transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y ,0);
+        transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
     }
     public void ChangeSpeed(float throttle)
     {
@@ -32,7 +37,7 @@ public class Controller : MonoBehaviour
     }
     public void Turn(float direction)
     {
-        transform.Rotate(0, direction * turnSpeed * Time.deltaTime,0);
+        transform.Rotate(0, direction * turnSpeed * Time.deltaTime, 0);
     }
     public void Idle()
     {
@@ -72,5 +77,12 @@ public class Controller : MonoBehaviour
     {
         Vector3 velocity = Vector3.forward * speed;
         transform.Translate(velocity * Time.deltaTime, Space.Self);
+    }
+
+   public void FacingWaypoint(Transform target)
+    {
+        float endTime = turnTimer * Time.deltaTime;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, target.rotation, endTime);
+
     }
 }

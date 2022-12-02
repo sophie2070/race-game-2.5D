@@ -7,6 +7,7 @@ public class WaypointDetection : MonoBehaviour
 {
     public int currentWaypoint = 0;
     public int currentLap = 1;
+    public int rainbowRing = 0;
     [SerializeField]
     GameObject finish;
     [SerializeField]
@@ -53,7 +54,7 @@ public class WaypointDetection : MonoBehaviour
         {
             currentLap = 2;
         }
-        if (currentWaypoint >= 37)
+        if (currentWaypoint >= 36)
         {
             currentLap = 3;
         }
@@ -61,6 +62,10 @@ public class WaypointDetection : MonoBehaviour
         {
             finish.SetActive(true);
             newlap.SetActive(false);
+        }
+        if (currentWaypoint == 60)
+        {
+            finish.SetActive(false);
         }
     }
 }
