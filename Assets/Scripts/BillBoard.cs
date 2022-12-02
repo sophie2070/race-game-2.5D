@@ -10,8 +10,6 @@ public class BillBoard : MonoBehaviour
     {
         cam = Camera.main;
     }
-
-    // Update is called once per frame
     void LateUpdate()
     {
         transform.LookAt(cam.transform);

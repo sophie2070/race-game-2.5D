@@ -9,8 +9,10 @@ public class WaypointDetection : MonoBehaviour
     public int currentLap = 1;
     [SerializeField]
     GameObject finish;
+    [SerializeField]
+    GameObject newlap;
 
-    
+
 
 
     private void OnTriggerEnter(Collider waypointhit)
@@ -18,30 +20,47 @@ public class WaypointDetection : MonoBehaviour
         if (waypointhit.gameObject.CompareTag("Waypoint"))
         {
             currentWaypoint++;
-            Debug.Log("waypointhit");
+        }
+        if (waypointhit.gameObject.CompareTag("NewLap"))
+        {
             FindObjectOfType<AudioManager>().Play("NewLap");
         }
         if (waypointhit.gameObject.CompareTag("Finish"))
         {
-            Debug.Log("Finished");
             FindObjectOfType<AudioManager>().Play("Finished");
+        }
+        if (waypointhit.gameObject.CompareTag("RainbowLoop"))
+        {
+            FindObjectOfType<AudioManager>().Play("RainbowLoop1");
+        }
+        if (waypointhit.gameObject.CompareTag("RainbowLoop2"))
+        {
+            FindObjectOfType<AudioManager>().Play("RainbowLoop2");
+        }
+        if (waypointhit.gameObject.CompareTag("RainbowLoop"))
+        {
+            FindObjectOfType<AudioManager>().Play("RainbowLoop3");
         }
     }
 
     private void Update()
     {
-        if (currentWaypoint >= 17)
+        if (currentWaypoint == 17)
+        {
+            newlap.SetActive(true);
+        }
+        if (currentWaypoint >= 19)
         {
             currentLap = 2;
         }
-        if (currentWaypoint >= 34)
+        if (currentWaypoint >= 37)
         {
             currentLap = 3;
         }
         if (currentWaypoint >= 50 && currentLap >= 3)
         {
-            finish.SetActive(enabled);
-            
+            finish.SetActive(true);
+            newlap.SetActive(false);
         }
     }
 }

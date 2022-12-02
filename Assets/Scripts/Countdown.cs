@@ -15,6 +15,12 @@ public class Countdown : MonoBehaviour
     GameObject cd2;
     [SerializeField]
     GameObject cd3;
+    [SerializeField]
+    GameObject start;
+    [SerializeField]
+    GameObject prestart;
+    [SerializeField]
+    GameObject theme;
     void Update()
     {
         if (timerRun == true)
@@ -23,29 +29,14 @@ public class Countdown : MonoBehaviour
             {
                 timertime += Time.deltaTime;
             }
-            /*if(!Mathf.Approximately(timertime, 5))
+            if(timertime >= 5.5f && timertime <= 8)
             {
-                FindObjectOfType<AudioManager>().Play("countdownBeeb");
+                prestart.SetActive(true);
             }
-            if (!Mathf.Approximately(timertime, 8))
-            {
-                FindObjectOfType<AudioManager>().Play("countdownBeeb");
-            }
-            if (!Mathf.Approximately(timertime, 9))
-            {
-                FindObjectOfType<AudioManager>().Play("countdownBeeb");
-            }
-            if (!Mathf.Approximately(timertime, 10))
-            {
-                FindObjectOfType<AudioManager>().Play("countdownBeeb");
-            }
-            if (!Mathf.Approximately(timertime, 11))
-            {
-                FindObjectOfType<AudioManager>().Play("startRaceBeeb");
-            }*/
 
             if (timertime >= 8 &&timertime <= 9)
             {
+                prestart.SetActive(false);
                 cd1.SetActive(true);
                 cd2.SetActive(false);
                 cd3.SetActive(false);
@@ -62,20 +53,19 @@ public class Countdown : MonoBehaviour
                 cd2.SetActive(false);
                 cd3.SetActive(true);
             }
-            if (timertime >= 11)
+            if (timertime >= 11 && timertime <= 12)
             {
-                timerRun = false;
+                
                 cd3.SetActive(false);
+                start.SetActive(true);
                 startrace = true;
+                theme.SetActive(true);
+            }
+            if (timertime >= 12 && timertime <= 13)
+            { 
+                start.SetActive(false);
+                timerRun = false;
             }
         }
     }
-    //void displaytime(float timercurrent)
-   // {
-       // timercurrent += 1;
-        //float minutes = Mathf.FloorToInt(timercurrent / 60);
-        //float seconds = Mathf.FloorToInt(timercurrent % 60);
-        //float milliseconds = (timercurrent % 1) * 1000;
-        //timertext.text = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
-    //}
 }
