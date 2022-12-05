@@ -8,13 +8,21 @@ public class WaypointDetection : MonoBehaviour
     public int currentWaypoint = 0;
     public int currentLap = 1;
     public int rainbowRing = 0;
+    public int newlaps = 0;
+
     [SerializeField]
     GameObject finish;
     [SerializeField]
     GameObject newlap;
+    [SerializeField]
+    GameObject am;
 
+    AudioManager AudioManager;
 
-
+    private void Awake()
+    {
+        AudioManager = am.GetComponent<AudioManager>();
+    }
 
     private void OnTriggerEnter(Collider waypointhit)
     {
@@ -24,48 +32,56 @@ public class WaypointDetection : MonoBehaviour
         }
         if (waypointhit.gameObject.CompareTag("NewLap"))
         {
-            FindObjectOfType<AudioManager>().Play("NewLap");
+            AudioManager.Play("NewLap");
+            newlaps++;
         }
         if (waypointhit.gameObject.CompareTag("Finish"))
         {
-            FindObjectOfType<AudioManager>().Play("Finished");
+            AudioManager.Play("Finished");
         }
         if (waypointhit.gameObject.CompareTag("RainbowLoop"))
         {
-            FindObjectOfType<AudioManager>().Play("RainbowLoop1");
+            AudioManager.Play("RainbowLoop1");
         }
         if (waypointhit.gameObject.CompareTag("RainbowLoop2"))
         {
-            FindObjectOfType<AudioManager>().Play("RainbowLoop2");
+            AudioManager.Play("RainbowLoop2");
         }
         if (waypointhit.gameObject.CompareTag("RainbowLoop"))
         {
-            FindObjectOfType<AudioManager>().Play("RainbowLoop3");
+            AudioManager.Play("RainbowLoop3");
         }
     }
 
     private void Update()
     {
-        if (currentWaypoint == 17)
+        if (currentWaypoint == 25)
         {
             newlap.SetActive(true);
         }
-        if (currentWaypoint >= 19)
+        if (currentWaypoint == 29 && newlaps == 1 && currentLap == 1)
         {
             currentLap = 2;
+            currentWaypoint = 0;
         }
-        if (currentWaypoint >= 36)
+        if (currentWaypoint >= 29 && currentLap == 2 && newlaps == 2)
         {
             currentLap = 3;
+            currentWaypoint = 0;
         }
-        if (currentWaypoint >= 50 && currentLap >= 3)
+        if (currentWaypoint >= 29 && currentLap >= 3 && newlaps == 3)
         {
             finish.SetActive(true);
             newlap.SetActive(false);
+            currentLap = 4;
         }
-        if (currentWaypoint == 60)
+        if (currentWaypoint == 5 && currentLap == 4)
         {
             finish.SetActive(false);
+        }
+        if(currentWaypoint == 29 && currentLap == 4)
+        {
+            currentWaypoint = 0;
         }
     }
 }

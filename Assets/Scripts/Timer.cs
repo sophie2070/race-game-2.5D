@@ -9,14 +9,18 @@ public class Timer : MonoBehaviour
 {
     [SerializeField]
     GameObject timerstart;
+    [SerializeField]
+    GameObject endscren;
     float timertime = 0;
     bool timerRun = true;
     public TMP_Text timertext;
     Countdown cd;
+    EndScreen endscreen;
 
     private void Start()
     {
         cd = timerstart.GetComponent<Countdown>();
+        endscreen = endscren.GetComponent<EndScreen>();
     }
 
     void Update()
@@ -25,15 +29,20 @@ public class Timer : MonoBehaviour
         {
             if (timerRun == true)
             {
-                if (timertime >= 0)
+                if (endscreen.finished == false)
                 {
-                    displaytime(timertime);
-                    timertime += Time.deltaTime;
+                    if (timertime >= 0)
+                    {
+                        
+                        timertime += Time.deltaTime;
+                    }
+
                 }
+                Displaytime(timertime);
             }
         }
     }
-    void displaytime(float timercurrent)
+    void Displaytime(float timercurrent)
     {
         timercurrent += 1;
         float minutes = Mathf.FloorToInt(timercurrent / 60);

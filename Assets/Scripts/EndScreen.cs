@@ -8,6 +8,8 @@ public class EndScreen : MonoBehaviour
     Camera cam1;
     [SerializeField]
     Camera cam2;
+    [SerializeField]
+    GameObject endmenup;
 
     public bool finished = false;
 
@@ -24,6 +26,7 @@ public class EndScreen : MonoBehaviour
         {
             cam1.enabled = false;
             cam2.enabled = true;
+            endmenup.SetActive(true);
         }
     }
 }

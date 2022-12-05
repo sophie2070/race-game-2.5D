@@ -49,16 +49,6 @@ public class RemoCon : MonoBehaviour
 
                 controller.Brakeing(brake * 2);
 
-                if (Input.GetKey(KeyCode.LeftShift))
-                {
-                    controller.PowerSlideActive();
-                }
-                if (Input.GetKeyUp(KeyCode.LeftShift))
-                {
-                    controller.PowerSlideOff();
-                }
-
-
                 controller.ChangeSpeed(forwards);
                 controller.Turn(turn);
                 controller.Brakeing(breakingPower);

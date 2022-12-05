@@ -14,6 +14,9 @@ public class Controller : MonoBehaviour
     [SerializeField]
     float turnTimer;
 
+    //
+    //  carrot kart
+    //
 
     protected void LateUpdate()
     {
@@ -65,13 +68,6 @@ public class Controller : MonoBehaviour
     public void PowerSlideActive()
     {
         turnSpeed = 60;
-    }
-
-    public void PowerSlideOff()
-    {
-        turnSpeed = 40;
-        speed = speed * 1.5f * Time.deltaTime;
-        speed = Mathf.Clamp(speed, 35, 50);
     }
     private void Update()
     {
