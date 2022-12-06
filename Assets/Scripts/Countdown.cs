@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Countdown : MonoBehaviour
 {
-    public float timertime = 4.5f;
+    public float timertime = 0;
     bool timerRun = true;
     public bool startrace = false;
 
