@@ -8,8 +8,8 @@ public class TrackCamIntro : MonoBehaviour
     float timer;
     [SerializeField]
     Vector3[] startpoint;
-    [SerializeField]
-    quaternion[] startpointrot;
+    //quaternion startpointrot = (0,180,0);
+    //quaternion startpointrot2 = (0,280,0);
     [SerializeField]
     Camera cam;
     bool timerOn = true;
@@ -29,14 +29,14 @@ public class TrackCamIntro : MonoBehaviour
             if(timer >= 1.5 && cam1D == true)
         {
             cam.transform.position = startpoint[1];
-            cam.transform.rotation = startpointrot[1];
+            cam.transform.Rotate(0 ,90 ,0 ,0);
             cam1D = false;
 
         }
         if (timer >= 3 && cam2D == true)
         {
             cam.transform.position = startpoint[2];
-            cam.transform.rotation = startpointrot[2];
+            cam.transform.Rotate(0, 100, 0, 0);
             cam2D = false;
         }
         if (timer >=  4.5)

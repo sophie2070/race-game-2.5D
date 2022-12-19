@@ -14,14 +14,17 @@ public class WaypointDetection : MonoBehaviour
     GameObject finish;
     [SerializeField]
     GameObject newlap;
+   // [SerializeField]
+    //GameObject am;
     [SerializeField]
-    GameObject am;
+    Controller controller;
 
     AudioManager AudioManager;
 
     private void Awake()
     {
-        AudioManager = am.GetComponent<AudioManager>();
+        //AudioManager = am.GetComponent<AudioManager>();
+        controller = controller.GetComponent<Controller>();
     }
 
     private void OnTriggerEnter(Collider waypointhit)
@@ -32,10 +35,10 @@ public class WaypointDetection : MonoBehaviour
         }
         if (waypointhit.gameObject.CompareTag("NewLap"))
         {
-            AudioManager.Play("NewLap");
+            //AudioManager.Play("NewLap");
             newlaps++;
         }
-        if (waypointhit.gameObject.CompareTag("Finish"))
+        /*if (waypointhit.gameObject.CompareTag("Finish"))
         {
             AudioManager.Play("Finished");
         }
@@ -50,6 +53,10 @@ public class WaypointDetection : MonoBehaviour
         if (waypointhit.gameObject.CompareTag("RainbowLoop"))
         {
             AudioManager.Play("RainbowLoop3");
+        }*/
+        if (waypointhit.gameObject.CompareTag("SpeedPad"))
+        {
+            controller.SpeedBoost();
         }
     }
 

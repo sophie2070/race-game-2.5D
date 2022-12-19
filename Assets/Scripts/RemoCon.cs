@@ -18,6 +18,10 @@ public class RemoCon : MonoBehaviour
     float verticalInput;
     float horizontalInput;
     float brake;
+    [SerializeField]
+    Camera cam;
+    [SerializeField]
+    Camera cam1;
     
 
     private void Awake()
@@ -48,6 +52,22 @@ public class RemoCon : MonoBehaviour
                 brake = Input.GetAxisRaw("Break");
 
                 controller.Brakeing(brake * 2);
+
+                if(Input.GetKey(KeyCode.RightShift))
+                {
+                    controller.PowerSlideActive();
+                }
+
+                if(Input.GetKeyDown(KeyCode.E))
+                {
+                    cam.enabled = false;
+                    cam1.enabled = true;
+                }
+                if (Input.GetKeyUp(KeyCode.E))
+                {
+                    cam.enabled = true;
+                    cam1.enabled = false;
+                }
 
                 controller.ChangeSpeed(forwards);
                 controller.Turn(turn);

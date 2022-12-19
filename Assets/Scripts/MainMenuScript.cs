@@ -9,7 +9,11 @@ public class MainMenuScript : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    public void quitgame()
+    public void SceneSwitch()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+    public void Quitgame()
     {
         Application.Quit();
     }

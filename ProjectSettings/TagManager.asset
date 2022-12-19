@@ -9,6 +9,7 @@ TagManager:
   - RainbowLoop2
   - RainbowLoop3
   - NewLap
+  - SpeedPad
   layers:
   - Default
   - TransparentFX
