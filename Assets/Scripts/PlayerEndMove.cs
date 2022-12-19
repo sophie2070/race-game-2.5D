@@ -9,7 +9,6 @@ public class PlayerEndMove : MonoBehaviour
     WaypointDetection waypointDetection;
     EndScreen endScreen;
 
-    //You can drag all your waypoints into this
     [SerializeField] Transform[] waypoints;
     [SerializeField] float speed = 1f;
 

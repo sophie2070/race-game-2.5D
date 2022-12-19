@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0020493232, g: 0.0020426107, b: 0.0020430416, a: 1}
+  m_IndirectSpecularColor: {r: 0.0020490375, g: 0.0020435941, b: 0.0020440246, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -675,22 +675,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1759960381}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &166782299
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 166782295}
-  serializedVersion: 2
-  m_Mass: 10
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!64 &166782300
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -705,6 +689,86 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 3f2ff1c200bfe2341a03838783218988, type: 3}
+--- !u!114 &166782304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166782295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adbc3bd871b711143949c6f8cd04601e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 1243568245}
+  waypoints:
+  - {fileID: 1877676477}
+  - {fileID: 625080643}
+  - {fileID: 1931665651}
+  - {fileID: 2127852920}
+  - {fileID: 1731398019}
+  - {fileID: 1223838259}
+  - {fileID: 285321857}
+  - {fileID: 893806389}
+  - {fileID: 426938687}
+  - {fileID: 677629566}
+  - {fileID: 294506311}
+  - {fileID: 493389899}
+  - {fileID: 572869572}
+  - {fileID: 1210670745}
+  - {fileID: 456479414}
+  - {fileID: 514155378}
+  - {fileID: 918916539}
+  - {fileID: 1348335097}
+  - {fileID: 946875172}
+  - {fileID: 2112506869}
+  - {fileID: 1701580584}
+  - {fileID: 1902635561}
+  - {fileID: 1684604553}
+  - {fileID: 1701275420}
+  - {fileID: 1520050105}
+  - {fileID: 1269899447}
+  - {fileID: 1994638554}
+  - {fileID: 1997007919}
+  - {fileID: 579860945}
+  speed: 60
+--- !u!114 &166782305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166782295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6454594d89ae00642a7fc5226c98fd89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWaypoint: 0
+  currentLap: 1
+  newlaps: 0
+  finish: {fileID: 1975934541}
+  newlap: {fileID: 596658435}
+  controller: {fileID: 1759960384}
+--- !u!114 &166782306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166782295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb6ac050d1d59194c8138332139ab6dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 35
+  turnSpeed: 40
+  Accel: 12
+  speed: 0
+  Break: 12
+  turnTimer: 1
 --- !u!1 &191372642
 GameObject:
   m_ObjectHideFlags: 0
@@ -4220,7 +4284,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWaypoint: 0
   currentLap: 1
-  rainbowRing: 0
   newlaps: 0
   finish: {fileID: 1975934541}
   newlap: {fileID: 596658435}
@@ -8202,6 +8265,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: kart 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f2ff1c200bfe2341a03838783218988,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f2ff1c200bfe2341a03838783218988, type: 3}
 --- !u!1 &1759960382 stripped
@@ -8286,11 +8354,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWaypoint: 0
   currentLap: 1
-  rainbowRing: 0
   newlaps: 0
   finish: {fileID: 1975934541}
   newlap: {fileID: 596658435}
   controller: {fileID: 1759960384}
+--- !u!64 &1759960387
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759960382}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!54 &1759960388
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759960382}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1774713265
 GameObject:
   m_ObjectHideFlags: 0

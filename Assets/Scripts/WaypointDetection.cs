@@ -7,7 +7,7 @@ public class WaypointDetection : MonoBehaviour
 {
     public int currentWaypoint = 0;
     public int currentLap = 1;
-    public int rainbowRing = 0;
+    //public int rainbowRing = 0;
     public int newlaps = 0;
 
     [SerializeField]
@@ -19,7 +19,7 @@ public class WaypointDetection : MonoBehaviour
     [SerializeField]
     Controller controller;
 
-    AudioManager AudioManager;
+    //AudioManager AudioManager;
 
     private void Awake()
     {
